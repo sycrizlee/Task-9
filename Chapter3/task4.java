@@ -7,13 +7,11 @@ public class task4 {
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Enter a string: ");
-        String input = scanner.nextLine();
+        String input = scanner.nextLine().toLowerCase().replaceAll(" ", "");
 
-        // Use StringBuilder to reverse the input string
         StringBuilder sb = new StringBuilder(input);
         String reversed = sb.reverse().toString();
 
-        // Use equals() to compare original and reversed
         if (input.equals(reversed)) {
             System.out.println("The input string is a palindrome.");
         } else {
@@ -21,5 +19,14 @@ public class task4 {
         }
 
         scanner.close();
+    
+
+
+/*Racecar                        → palindrome 
+  MADAM                          → palindrome 
+  a man a plan a canal panama    → palindrome 
+  Never Odd Or Even              → palindrome 
+  hello                          → not a palindrome 
+*/
     }
 }
