@@ -1,0 +1,21 @@
+public class task 8 {
+
+    public static int processNumbers(int... numbers) {
+        int totalSumOfParameters = 0;
+        System.out.println("Processing parameters:");
+        for (int num : numbers) {
+            totalSumOfParameters += num;
+            int cumulativeSum = 0;
+            for (int i = 1; i <= num; i++) {
+                cumulativeSum += i;
+            }
+            System.out.println("Parameter: " + num + " -> Cumulative Sum (1 to " + num + ") = " + cumulativeSum);
+        }
+        return totalSumOfParameters;
+    }
+    public static void main(String[] args) {
+        int[] inputParams = {4, 5, 10};
+        int totalSum = processNumbers(inputParams);
+        System.out.println("\nTotal sum of all original parameters: " + totalSum);
+    }
+}
