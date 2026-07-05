@@ -1,0 +1,50 @@
+public class task 14 {
+    public static void main(String[] args) {
+        Vehicle myCar = new Car("BMW");
+        Vehicle myBoat = new Boat("Bayliner");
+
+        myCar.move();
+        myBoat.move();
+        myCar.honk();
+        myBoat.honk();
+    }
+
+    static abstract class Vehicle {
+        private String brand;
+        public Vehicle(String brand) {
+            this.brand = brand;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        abstract void move();
+
+        public void honk() {
+            System.out.println(brand + " says: Beep beep!");
+        }
+    }
+
+    static class Car extends Vehicle {
+        public Car(String brand) {
+            super(brand);
+        }
+
+        @Override
+        void move() {
+            System.out.println(getBrand() + " drives on the road with 4 wheels.");
+        }
+    }
+
+    static class Boat extends Vehicle {
+        public Boat(String brand) {
+            super(brand);
+        }
+
+        @Override
+        void move() {
+            System.out.println(getBrand() + " sails across the water using a propeller.");
+        }
+    }
+}
