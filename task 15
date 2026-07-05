@@ -1,0 +1,110 @@
+public class task 15 {
+    public static void main(String[] args) {
+
+        Shape circle = new Circle("Red", 5.0);
+        Shape rectangle = new Rectangle("Blue", 4.0, 6.0);
+        Shape octagon = new Octagon("Green", 3.5);
+        Shape decagon = new Decagon("Yellow", 2.0);
+
+        printShapeDetails("Circle", circle);
+        printShapeDetails("Rectangle", rectangle);
+        printShapeDetails("Octagon", octagon);
+        printShapeDetails("Decagon", decagon);
+    }
+
+    private static void printShapeDetails(String name, Shape shape) {
+        System.out.println("--- " + name + " Details ---");
+        System.out.printf("Area: %.2f%n", shape.calculateArea());
+        System.out.printf("Perimeter: %.2f%n%n", shape.calculatePerimeter());
+    }
+}
+
+interface Shape {
+    double calculateArea();
+    double calculatePerimeter();
+}
+
+abstract class AbstractShape implements Shape {
+    protected String color;
+    protected double length;
+    protected double width;
+
+
+    public AbstractShape(String color, double length, double width) {
+        this.color = color;
+        this.length = length;
+        this.width = width;
+    }
+}
+
+class Circle extends AbstractShape {
+    private double radius;
+
+    public Circle(String color, double radius) {
+        super(color, radius, radius); 
+        this.radius = radius;
+    }
+
+    @Override
+    public double calculateArea() {
+        return Math.PI * radius * radius;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * Math.PI * radius;
+    }
+}
+
+class Rectangle extends AbstractShape {
+    public Rectangle(String color, double length, double width) {
+        super(color, length, width);
+    }
+
+    @Override
+    public double calculateArea() {
+        return length * width;
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 2 * (length + width);
+    }
+}
+
+class Octagon extends AbstractShape {
+    private double sideLength;
+
+    public Octagon(String color, double sideLength) {
+        super(color, sideLength, sideLength);
+        this.sideLength = sideLength;
+    }
+
+    @Override
+    public double calculateArea() {
+        return 2 * (1 + Math.sqrt(2)) * Math.pow(sideLength, 2);
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 8 * sideLength;
+    }
+}
+
+class Decagon extends AbstractShape {
+    private double sideLength;
+    public Decagon(String color, double sideLength) {
+        super(color, sideLength, sideLength);
+        this.sideLength = sideLength;
+    }
+
+    @Override
+    public double calculateArea() {
+        return 2.5 * Math.pow(sideLength, 2) * Math.sqrt(5 + 2 * Math.sqrt(5));
+    }
+
+    @Override
+    public double calculatePerimeter() {
+        return 10 * sideLength;
+    }
+}
